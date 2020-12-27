@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: GatewayService
+    
+server:  port: 8989

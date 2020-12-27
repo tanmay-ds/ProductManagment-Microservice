@@ -1,0 +1,5 @@
+package com.productmanagment.product.config;
+
+public class CollectionConfig {
+
+}

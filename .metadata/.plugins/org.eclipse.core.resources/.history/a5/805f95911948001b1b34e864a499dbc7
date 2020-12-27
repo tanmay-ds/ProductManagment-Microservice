@@ -1,0 +1,24 @@
+package com.productmanagment.userinfo.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+import com.productmanagment.userinfo.entity.UserInfo;
+import com.productmanagment.userinfo.repo.UserInfoRepository;
+import com.productmanagment.userinfo.security.CustomUserDetail;
+
+public class CustomUserDetailService implements UserDetailsService{
+	
+	@Autowired
+	UserInfoRepository userInfoRepository;
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		UserInfo userInfo = userInfoRepository.findByEmail(username);
+		
+		return new CustomUserDetail(userInfo);
+	}
+
+}

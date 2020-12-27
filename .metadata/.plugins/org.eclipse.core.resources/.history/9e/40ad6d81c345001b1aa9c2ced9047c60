@@ -1,0 +1,13 @@
+package com.productmanagment.userinfo.service;
+
+import java.util.List;
+
+import javax.validation.Valid;
+
+import com.productmanagment.userinfo.dto.UserInfoDto;
+
+public interface UserService {
+
+	String createUser(List<@Valid UserInfoDto> usersDto);
+	
+}

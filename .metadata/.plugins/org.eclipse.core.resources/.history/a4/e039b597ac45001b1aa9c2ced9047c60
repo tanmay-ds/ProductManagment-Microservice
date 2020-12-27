@@ -1,0 +1,5 @@
+package com.productmanagment.product.repo;
+
+public class ProductRepo {
+
+}

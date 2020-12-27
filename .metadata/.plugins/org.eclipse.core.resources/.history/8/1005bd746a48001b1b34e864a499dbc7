@@ -1,0 +1,5 @@
+package com.productmanagment.userinfo.web.rest;
+
+public class AuthRestController {
+
+}

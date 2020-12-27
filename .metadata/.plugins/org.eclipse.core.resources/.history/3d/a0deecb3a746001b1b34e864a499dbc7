@@ -1,0 +1,5 @@
+package com.productmanagment.userinfo.service.impl;
+
+public interface UserInfoRepositoryTemplate {
+
+}

@@ -1,0 +1,5 @@
+package com.productmanagment.userinfo.security;
+
+public class JwtFilter {
+
+}

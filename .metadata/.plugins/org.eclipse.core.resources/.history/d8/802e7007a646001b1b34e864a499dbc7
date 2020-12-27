@@ -1,0 +1,5 @@
+package com.productmanagment.userinfo.model;
+
+public class MyUserDetails {
+
+}

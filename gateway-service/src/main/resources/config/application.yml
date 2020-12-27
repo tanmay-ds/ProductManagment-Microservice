@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: GatewayService
+  cloud:    gateway:      routes:      - id: product
+        uri: lb://PRODUCT-INFO
+        predicates:        - Path=/product/** 
+          
+      - id: user
+        uri: lb://USER-INFO
+        predicates:
+        - Path=/users/** 
+        
+      - id: auth
+        uri: lb://USER-INFO
+        predicates:
+        - Path=/auth/**
+        
+server:  port: 8989
+  
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    hostname: localhost

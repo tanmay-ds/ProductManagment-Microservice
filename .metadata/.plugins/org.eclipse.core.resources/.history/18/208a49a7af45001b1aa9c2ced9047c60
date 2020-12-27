@@ -1,0 +1,5 @@
+package com.productmanagment.product.service;
+
+public class SequenceGenrationService {
+
+}

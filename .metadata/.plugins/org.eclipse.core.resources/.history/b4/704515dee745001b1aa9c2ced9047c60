@@ -1,0 +1,36 @@
+package com.productmanagment.productmngmt.web.rest.client.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.data.domain.Page;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import com.productmanagment.productmngmt.model.ClientMapper;
+import com.productmanagment.productmngmt.model.Product;
+import com.productmanagment.productmngmt.web.rest.client.ProductClient;
+
+@Service
+public class ProductClientImpl implements ProductClient {
+
+	private static final String URL = "http://localhost:8082/product/getall";
+
+	@Autowired
+	private RestTemplate restTemplate;
+
+	@Override
+	public Page<Product> getAllProduct() {
+		ResponseEntity<ClientMapper<Page<Product>>> responseEntity = restTemplate.exchange(URL,HttpMethod.GET,null,
+				new ParameterizedTypeReference<ClientMapper<Page<Product>>>() {
+				});
+		
+		ClientMapper<Page<Product>> clientMapper = responseEntity.getBody();
+		return clientMapper.getData();
+		
+	}
+
+}

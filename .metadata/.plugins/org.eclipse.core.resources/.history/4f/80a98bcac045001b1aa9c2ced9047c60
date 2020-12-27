@@ -1,0 +1,8 @@
+package com.productmanagment.userinfo.dto;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class Dtos {
+
+}

@@ -1,0 +1,30 @@
+package com.productmanagment.userinfo.config;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.core.MongoTemplate;
+
+import com.github.cloudyrock.mongock.driver.mongodb.springdata.v3.SpringDataMongoV3Driver;
+import com.github.cloudyrock.spring.v5.MongockSpring5;
+import com.github.cloudyrock.spring.v5.MongockSpring5.MongockInitializingBeanRunner;
+
+import io.changock.runner.spring.v5.ChangockSpring5;
+import io.changock.runner.spring.v5.SpringInitializingBeanRunner;
+import io.changock.runner.spring.v5.config.EnableChangock;
+
+@Configuration
+public class UserDatabaseConfig {
+
+	@Bean
+	public MongockInitializingBeanRunner mongock(
+	        ApplicationContext springContext,
+	        MongoTemplate mongoTemplate){
+		return MongockSpring5.builder()
+		        .setDriver(SpringDataMongoV3Driver.withDefaultLock(mongoTemplate))
+		        .addChangeLogsScanPackage("com.productmanagment.userinfo.config.changelog")
+		        .setSpringContext(springContext)
+		        .buildInitializingBeanRunner();
+	  }
+
+}

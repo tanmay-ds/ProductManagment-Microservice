@@ -1,0 +1,15 @@
+package com.productmanagment.userinfo.dto;
+
+import org.springframework.stereotype.Component;
+
+import com.productmanagment.userinfo.entity.UserInfo;
+
+@Component
+public class Dtos {
+
+	public UserInfo userDtoTouser(UserInfo user) {
+		
+		return null;
+	}
+
+}

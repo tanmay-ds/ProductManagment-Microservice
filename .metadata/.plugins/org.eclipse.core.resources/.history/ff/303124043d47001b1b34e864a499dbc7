@@ -1,0 +1,2 @@
+spring:  application:    name: product-info  data:    mongodb:      host: localhost      port: 27017      database: ProductManagment-Productinfo      auto-index-creation: true
+server:  port: 8082

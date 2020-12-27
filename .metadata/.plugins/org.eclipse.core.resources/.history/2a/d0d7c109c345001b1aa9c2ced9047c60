@@ -1,0 +1,36 @@
+package com.productmanagment.userinfo.service.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.productmanagment.userinfo.dto.Dtos;
+import com.productmanagment.userinfo.dto.UserInfoDto;
+import com.productmanagment.userinfo.entity.UserInfo;
+import com.productmanagment.userinfo.service.SequenceGenrationService;
+import com.productmanagment.userinfo.service.UserService;
+
+public class UserServiceImpl implements UserService{
+
+	@Autowired
+	SequenceGenrationService sequenceGenrationService;
+	
+	@Autowired
+	Dtos dtos;
+	
+	@Override
+	public String createUser(List<@Valid UserInfoDto> usersDto) {
+		List<UserInfo> userInfoList = new ArrayList<>();
+		for (UserInfoDto user : usersDto) {
+			UserInfo userInfo = dtos.userDtoTouser(user);
+			userInfo.setUuid(sequenceGenrationService.generateUsersSequence(UserInfo.SEQUENCE_NAME));
+			userInfoList.add(user);
+		}
+		userRepo.saveAll(encryptedUsers);
+		return Constants.USER_ADDED;
+	}
+
+}

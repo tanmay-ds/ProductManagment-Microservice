@@ -1,0 +1,7 @@
+spring:  cloud:    gateway:      routes:      - id: product-info
+        uri: lb://product-info
+        predicates:        - Path=/product/**       
+      - id: user-info
+        uri: lb://user-info
+        predicates:
+        - Path=/users/**

@@ -1,0 +1,26 @@
+package com.productmanagment.userinfo.service.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.validation.Valid;
+
+import com.productmanagment.userinfo.dto.UserInfoDto;
+import com.productmanagment.userinfo.entity.UserInfo;
+import com.productmanagment.userinfo.service.UserService;
+
+public class UserServiceImpl implements UserService{
+
+	@Override
+	public String createUser(List<@Valid UserInfoDto> usersDto) {
+		List<UserInfo> userinfo = new ArrayList<>();
+		for (Users user : users) {
+			Users encrypteduser = dtos.encrypt(user);
+			encrypteduser.setUuid(sequenceGenrationService.generateUserSequence(Users.SEQUENCE_NAME));
+			encryptedUsers.add(encrypteduser);
+		}
+		userRepo.saveAll(encryptedUsers);
+		return Constants.USER_ADDED;
+	}
+
+}

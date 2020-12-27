@@ -1,0 +1,3 @@
+spring:  application:    name: user-info  data:    mongodb:      host: localhost      port: 27017      database: ProductManagment-Userinfo      auto-index-creation: true
+server:  port: 8083  
+key: SecretNotKey

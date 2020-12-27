@@ -1,0 +1,23 @@
+package com.productmanagment.productmngmt.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.productmanagment.productmngmt.model.Product;
+import com.productmanagment.productmngmt.service.PMService;
+import com.productmanagment.productmngmt.web.rest.client.ProductClient;
+
+@Service
+public class PMServiceImpl implements PMService{
+
+	@Autowired
+	ProductClient productClient;
+	
+	@Override
+	public List<Product> getAll() {
+		return null;
+	}
+
+}

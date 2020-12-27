@@ -1,0 +1,29 @@
+package com.productmanagment.productmngmt.exceptionhandler;
+
+import org.springframework.http.HttpStatus;
+
+import com.productmanagment.productmngmt.model.ResponseModel;
+
+public class ClientErrorException extends RuntimeException {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3054265676486160891L;
+
+	private ResponseModel responseModel;
+
+	public ClientErrorException(ResponseModel responseModel) {
+		super();
+		this.responseModel = responseModel;
+	}
+
+	public ResponseModel getResponseModel() {
+		return responseModel;
+	}
+
+	public void setResponseModel(ResponseModel responseModel) {
+		this.responseModel = responseModel;
+	}
+
+}

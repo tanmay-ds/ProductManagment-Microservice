@@ -1,0 +1,88 @@
+package com.productmanagment.userinfo.security;
+
+import java.util.Collection;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+public class CustomUserDetail implements UserDetails{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4859982843868046672L;
+	
+	private String username;
+	private String email;
+	private String token;
+	private Collection<? extends GrantedAuthority> grantedAuthority;
+	
+	public CustomUserDetail(String username, String email, String token,
+			Collection<? extends GrantedAuthority> grantedAuthority) {
+		super();
+		this.username = username;
+		this.email = email;
+		this.token = token;
+		this.grantedAuthority = grantedAuthority;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+	public void setGrantedAuthority(Collection<? extends GrantedAuthority> grantedAuthority) {
+		this.grantedAuthority = grantedAuthority;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return grantedAuthority;
+	}
+
+	@Override
+	public String getPassword() {
+		return null;
+	}
+
+	@Override
+	public String getUsername() {
+		return username;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
+
+}

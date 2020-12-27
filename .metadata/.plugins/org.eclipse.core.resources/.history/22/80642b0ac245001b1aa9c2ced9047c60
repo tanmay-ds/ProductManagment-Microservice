@@ -1,0 +1,5 @@
+package com.productmanagment.userinfo.repo;
+
+public class UserInfoRepository {
+
+}

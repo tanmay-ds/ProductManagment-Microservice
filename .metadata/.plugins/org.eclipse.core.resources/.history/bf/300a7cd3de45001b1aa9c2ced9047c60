@@ -1,0 +1,13 @@
+package com.productmanagment.productmngmt.service;
+
+import java.util.List;
+
+import com.productmanagment.productmngmt.model.Product;
+
+public interface PMService {
+
+	List<Product> getAll();
+	
+	
+	
+}
