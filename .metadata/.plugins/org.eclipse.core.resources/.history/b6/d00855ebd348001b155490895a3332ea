@@ -1,0 +1,6 @@
+package com.productmanagment.userinfo.exceptionhandler;
+
+public class JwtSignatureException extends RuntimeException{
+	
+
+}

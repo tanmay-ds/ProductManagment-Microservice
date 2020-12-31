@@ -51,3 +51,7 @@ n
 Xsrc/main/java/com/productmanagment/product/exceptionhandler/CustomExceptionsHandler.java,4\4\4439deded662d20ee69306db175811b600b43040
 Y
 )src/main/resources/application.properties,0\6\06f65155ec73600b9fc5c4dc2883d4bb84d8e284
+Y
+)src/main/resources/config/application.yml,c\7\c73d7a14b666c73e084950654b5545af58a74204
+y
+Isrc/main/java/com/productmanagment/product/security/CustomUserDetail.java,0\8\080f96fa4514da2f15c34b02494fb71dd72c4896

@@ -17,6 +17,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.productmanagment.product.exceptionhandler.JwtSignatureException;
 import com.productmanagment.product.model.ResponseModel;
 
 import io.jsonwebtoken.ExpiredJwtException;
@@ -46,7 +47,7 @@ public class JwtFilter extends OncePerRequestFilter {
 			}
 			filterChain.doFilter(request, response);
 
-		} catch (ExpiredJwtException | AccessDeniedException e) {
+		} catch (ExpiredJwtException | AccessDeniedException | JwtSignatureException e) {
 
 			PrintWriter out = response.getWriter();
 			response.setContentType("application/json");

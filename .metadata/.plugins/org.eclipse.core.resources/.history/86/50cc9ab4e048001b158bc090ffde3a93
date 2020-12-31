@@ -1,0 +1,17 @@
+package com.productmanagment.productmngmt.service.impl;
+
+import com.productmanagment.productmngmt.service.TestService;
+
+public class TestServiceImpl1 implements TestService{
+
+	@Override
+	public String fun1() {
+		return "fin1";
+	}
+
+	@Override
+	public String fun2() {
+		return null;
+	}
+
+}

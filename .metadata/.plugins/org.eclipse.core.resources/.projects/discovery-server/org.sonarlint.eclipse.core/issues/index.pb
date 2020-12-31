@@ -1,6 +1,4 @@
 
-m
-=src/main/java/com/deathstroke/DiscoveryServerApplication.java,1\1\1144d38deefb5af7fceb277899faadf8a5f5a8a3
 r
 Bsrc/test/java/com/deathstroke/DiscoveryServerApplicationTests.java,7\6\76fd54f68615c959f1e394315074a97ab79567c4
 7

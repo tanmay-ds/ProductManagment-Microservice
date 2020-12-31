@@ -8,11 +8,11 @@
 		<version>2.4.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.deathstroke</groupId>
+	<groupId>com.productmanagment</groupId>
 	<artifactId>gateway-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>gateway-service</name>
-	<description>discovery-server</description>
+	<description>gateway-server</description>
 
 	<properties>
 		<java.version>11</java.version>

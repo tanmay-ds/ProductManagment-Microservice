@@ -11,18 +11,22 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import com.productmanagment.userinfo.exceptionhandler.JwtSignatureException;
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.SignatureException;
 
 @Component
 public class JwtTokenProvider {
 
-	@Value("${secretkey}")
+	@Value("${jwtsecretkey}")
 	private String secretKey;
 
 	public String genrateToken(UserDetails userDetails) {
-		String authorities = userDetails.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.joining(","));
+		String authorities = userDetails.getAuthorities().stream().map(GrantedAuthority::getAuthority)
+				.collect(Collectors.joining(","));
 		Map<String, Object> claims = new LinkedHashMap<>();
 		claims.put("email", userDetails.getUsername());
 		claims.put("roles", authorities);
@@ -31,10 +35,7 @@ public class JwtTokenProvider {
 	}
 
 	private String createToken(Map<String, Object> claims, String subject) {
-		return Jwts.builder()
-				.setClaims(claims)
-				.setSubject(subject)
-				.setIssuedAt(new Date())
+		return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date())
 				.setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
 				.signWith(SignatureAlgorithm.HS256, secretKey).compact();
 	}
@@ -53,7 +54,11 @@ public class JwtTokenProvider {
 	}
 
 	private Claims extractAllClaims(String token) {
-		return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
+		try {
+			return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
+		} catch (SignatureException e) {
+			throw new JwtSignatureException(e.getLocalizedMessage());
+		}
 
 	}
 

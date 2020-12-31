@@ -1,0 +1,9 @@
+package com.productmanagment.productmngmt.service;
+
+import org.springframework.stereotype.Service;
+
+public interface TestService {
+	
+	String fun1();
+
+}

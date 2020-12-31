@@ -1,0 +1,7 @@
+package com.productmanagment.productmngmt.service;
+
+spublic interface TestService {
+	
+	String fun1();
+
+}

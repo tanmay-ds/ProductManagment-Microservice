@@ -13,15 +13,17 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import com.productmanagment.product.exceptionhandler.JwtSignatureException;
 import com.productmanagment.product.security.CustomUserDetail;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureException;
 
 @Component
 public class JwtUtil {
 
-	private String secretKey = "titan";
+	private String secretKey = "5hXIAvePisq/EgHwznfyQQ==";
 
 	public Authentication getAuthentication(String token) {
 		CustomUserDetail customUserDetail = new CustomUserDetail(extractUsername(token), extractEmail(token),
@@ -53,8 +55,12 @@ public class JwtUtil {
 		return claimResolver.apply(claims);
 	}
 
-	private Claims extractAllClaims(String token) {
-		return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
+	public Claims extractAllClaims(String token) {
+		try {
+			return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
+		} catch (SignatureException e) {
+			throw new JwtSignatureException(e.getLocalizedMessage());
+		}
 
 	}
 

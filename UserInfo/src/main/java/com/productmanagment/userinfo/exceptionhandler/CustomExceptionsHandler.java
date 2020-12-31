@@ -20,6 +20,11 @@ public class CustomExceptionsHandler extends ResponseEntityExceptionHandler {
 	public final ResponseEntity<ResponseModel> badCred(BadCredsException e, WebRequest request) {
 		return internalServerError(e.getLocalizedMessage());
 	}
+	
+	@ExceptionHandler(JwtSignatureException.class)
+	public final ResponseEntity<ResponseModel> jwtSignatureException(JwtSignatureException e, WebRequest request) {
+		return internalServerError(e.getLocalizedMessage());
+	}
 
 	private ResponseEntity<ResponseModel> internalServerError(String message) {
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ResponseModel(new Date().toString(),
