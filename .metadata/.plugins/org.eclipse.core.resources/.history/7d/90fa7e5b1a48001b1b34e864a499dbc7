@@ -1,5 +1,0 @@
-package com.productmanagment.userinfo.security.jwt;
-
-public class JwtFilter {
-
-}

@@ -75,4 +75,14 @@ public class UserServiceImpl implements UserService {
 		return "Bearer " + jwtTokenProvider.genrateToken(userDetails);
 	}
 
+	@Override
+	public List<UserInfo> getAllList() {
+		return userInfoRepository.findAll();
+	}
+
+	@Override
+	public UserInfo getByEmail(String email) {
+		return userInfoRepository.findByEmail(email);
+	}
+
 }

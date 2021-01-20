@@ -1,5 +1,0 @@
-package com.productmanagment.userinfo.security;
-
-public class CustomUserDetail {
-
-}

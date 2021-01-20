@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +30,7 @@ import com.productmanagment.userinfo.service.UserService;
 @RestController
 @RequestMapping("/users")
 public class UserRestController {
-	
+
 	@Autowired
 	UserService userService;
 
@@ -39,10 +40,21 @@ public class UserRestController {
 		return ResponseEntity.ok(new ResponseModel(new Date().toString(), HttpStatus.OK,
 				Collections.singletonMap(Constants.MESSAGE_KEY, userService.createUser(usersDto))));
 	}
-	
-	@PreAuthorize("hasAnyRole('ADMIN')")
+
+//	@PreAuthorize("hasAnyRole('ADMIN')")
 	@GetMapping("getalluser")
 	public ResponseEntity<Page<UserInfo>> getAll(Pageable pageable) {
 		return ResponseEntity.ok(userService.getAll(pageable));
 	}
+	@PreAuthorize("hasAnyRole('ADMIN')")
+	@GetMapping("getalluserlist")
+	public ResponseEntity<List<UserInfo>> getAllList() {
+		return ResponseEntity.ok(userService.getAllList());
+	}
+//	@PreAuthorize("hasAnyRole('ADMIN')")
+	@GetMapping("getbyemail/{email}")
+	public UserInfo getByEmail(@PathVariable("email") String email) {
+		return userService.getByEmail(email);
+	}
+
 }

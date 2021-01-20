@@ -1,13 +1,0 @@
-spring:
-  application:
-    name: GatewayService
-  cloud:    gateway:      routes:      - id: product
-        uri: lb://product-info
-        predicates:        - Path=/product/** 
-            
-      - id: user
-        uri: lb://user-info
-        predicates:
-        - Path=/users/**
-    
-server:  port: 8989

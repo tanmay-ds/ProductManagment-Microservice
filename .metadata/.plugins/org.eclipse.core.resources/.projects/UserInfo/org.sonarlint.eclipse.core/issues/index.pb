@@ -41,3 +41,5 @@ Y
 0src/main/resources/config/application.properties,a\f\afbcf0002f33a235d706e22fa7c656b84ac4b6ed
 p
 @src/main/java/com/productmanagment/userinfo/util/CryptoUtil.java,4\8\48b9f2191bfd54e14f46a640b56794dad91c1236
+|
+Lsrc/main/java/com/productmanagment/userinfo/web/rest/AuthRestController.java,5\d\5d50de0d228358499683ec117ad853ae7b1b211b

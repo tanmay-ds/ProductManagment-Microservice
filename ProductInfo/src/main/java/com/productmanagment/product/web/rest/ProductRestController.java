@@ -20,14 +20,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.productmanagment.product.constant.Constants;
 import com.productmanagment.product.dto.ProductDto;
 import com.productmanagment.product.entity.Product;
 import com.productmanagment.product.model.ResponseModel;
+import com.productmanagment.product.model.UserInfo;
 import com.productmanagment.product.service.ProductService;
+import com.productmanagment.product.web.rest.client.UserClient;
 
 @Validated
 @RestController
@@ -36,6 +40,9 @@ public class ProductRestController {
 
 	@Autowired
 	ProductService proService;
+
+	@Autowired
+	UserClient userClient;
 
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@PostMapping("create")
@@ -70,8 +77,8 @@ public class ProductRestController {
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@DeleteMapping("delete/{pid}")
 	public ResponseEntity<ResponseModel> deleteProduct(@PathVariable Long pid) {
-		return ResponseEntity.ok(new ResponseModel(new Date().toString(), HttpStatus.OK,
-				Collections.singletonMap(Constants.MESSAGE_KEY, "Product with Id : " + proService.deleteProd(pid) + " is deleted")));
+		return ResponseEntity.ok(new ResponseModel(new Date().toString(), HttpStatus.OK, Collections.singletonMap(
+				Constants.MESSAGE_KEY, "Product with Id : " + proService.deleteProd(pid) + " is deleted")));
 	}
 
 	@PreAuthorize("hasAnyRole('ADMIN')")
@@ -88,5 +95,16 @@ public class ProductRestController {
 				Collections.singletonMap(Constants.MESSAGE_KEY, proService.removeStock(stockList))));
 	}
 
-	
+	@PreAuthorize("hasAnyRole('ADMIN')")
+	@GetMapping("/findAllUser")
+	public ResponseEntity<List<UserInfo>> listuser(@RequestHeader(value = "Authorization") String token) {
+		return userClient.getUsers(token);
+	}
+
+	@PreAuthorize("hasAnyRole('ADMIN')")
+	@GetMapping("/getuserbyemail")
+	public ResponseEntity<UserInfo> getUserByEmail(@RequestParam(name = "email") String email) {
+		return ResponseEntity.ok(userClient.getByEmail(email));
+	}
+
 }

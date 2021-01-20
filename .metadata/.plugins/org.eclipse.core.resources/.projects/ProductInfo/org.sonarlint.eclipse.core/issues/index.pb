@@ -55,3 +55,9 @@ Y
 )src/main/resources/config/application.yml,c\7\c73d7a14b666c73e084950654b5545af58a74204
 y
 Isrc/main/java/com/productmanagment/product/security/CustomUserDetail.java,0\8\080f96fa4514da2f15c34b02494fb71dd72c4896
+n
+>src/main/java/com/productmanagment/product/model/UserInfo.java,3\5\356a31da233272467fa71c2a2dd6b010458df670
+z
+Jsrc/main/java/com/productmanagment/product/web/rest/client/UserClient.java,2\3\233a6f486ea7f1e93e5d8dfdaf42b3db5af313ec
+n
+>src/main/java/com/productmanagment/product/model/RoleInfo.java,6\9\697f1a87eeaf8c97b108b95ef5cac060db50db15

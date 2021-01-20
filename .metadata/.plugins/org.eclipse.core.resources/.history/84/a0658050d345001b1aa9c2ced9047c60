@@ -1,5 +1,0 @@
-package com.productmanagment.productmngmt.web.rest.client;
-
-public class ProductClient {
-
-}

@@ -1,5 +1,0 @@
-package com.productmanagment.productmngmt.exceptionhandler;
-
-public class ClientErrorException {
-
-}
