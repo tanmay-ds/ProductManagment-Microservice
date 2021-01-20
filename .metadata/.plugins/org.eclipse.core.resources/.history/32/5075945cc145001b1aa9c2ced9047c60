@@ -1,7 +1,0 @@
-package com.productmanagment.userinfo.service;
-
-public interface SequenceGenrationService {
-	
-	Long generateUsersSequence(String seqName);
-	
-}

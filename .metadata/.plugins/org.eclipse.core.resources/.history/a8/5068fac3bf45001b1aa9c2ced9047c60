@@ -1,7 +1,0 @@
-package com.productmanagment.userinfo.constant;
-
-public class Constants {
-
-	public static final String MESSAGE_KEY = "message";
-
-}

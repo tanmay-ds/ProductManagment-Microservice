@@ -19,4 +19,8 @@ public interface UserService {
 
 	String authenticate(AuthRequest authRequest);
 
+	List<UserInfo> getAllList();
+
+	UserInfo getByEmail(String email);
+
 }

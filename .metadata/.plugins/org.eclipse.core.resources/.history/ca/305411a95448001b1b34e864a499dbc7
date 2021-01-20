@@ -1,5 +1,0 @@
-package com.productmanagment.product.security;
-
-public class ProductSecurityConfig {
-
-}

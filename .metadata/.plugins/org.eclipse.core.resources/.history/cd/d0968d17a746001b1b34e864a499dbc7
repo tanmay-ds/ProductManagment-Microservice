@@ -1,5 +1,0 @@
-package com.productmanagment.userinfo.exceptionhandler;
-
-public class BadCredsException {
-
-}
